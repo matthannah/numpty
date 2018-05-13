@@ -13,11 +13,8 @@ def init_app(app):
 
 def init_db():
     db = get_db()
-
-    with db.cursor() as cursor:
-        sql_file = os.path.join(os.path.dirname(__file__), "schema.sql")
-        cursor.execute(open(sql_file, "r").read())
-
+    sql_file = os.path.join(os.path.dirname(__file__), "schema.sql")
+    db.cursor().execute(open(sql_file, "r").read())
     db.commit()
 
 
